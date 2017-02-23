@@ -8,7 +8,8 @@ RUN apt-get update \
 
 RUN go get -u k8s.io/test-infra/kubetest
 
-ADD https://storage.googleapis.com/kubernetes-release/release/v1.5.2/bin/linux/amd64/kubectl /usr/bin/kubectl
+ENV KUBECTL_VERSION v1.5.3
+ADD https://storage.googleapis.com/kubernetes-release/release/$KUBECTL_VERSION/bin/linux/amd64/kubectl /usr/bin/kubectl
 RUN chmod +x /usr/bin/kubectl
 
 COPY kubernetes /go/src/k8s.io/kubernetes
